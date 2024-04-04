@@ -10,6 +10,16 @@ const app = express();
 // Rouate files
 const bootcamps = require('./routes/bootcamps')
 
+// Pt Middleware
+const logger = (req, res, next) =>{
+  req.hello = "Hello World";
+  console.log("Middleware ran");
+  next();
+
+}
+
+app.use(logger);
+
 // Mount router
 app.use('/api/v1/bootcamps', bootcamps);
 
